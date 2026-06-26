@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { BadgeWall } from "../components/common/BadgeWall";
 
 type CompletionPageProps = {
@@ -16,7 +17,7 @@ type CompletionPageProps = {
   onGoHome: () => void;
 };
 
-export function CompletionPage({
+export const CompletionPage = memo(function CompletionPage({
   themeTitle,
   starsEarned,
   learnedWordsCount,
@@ -27,35 +28,35 @@ export function CompletionPage({
 }: CompletionPageProps) {
   return (
     <section className="panel completion-panel">
-      <span className="eyebrow">å®Œæˆå•¦</span>
-      <h2>{themeTitle} æ¢ç´¢å®Œæˆ</h2>
-      <p className="completion-panel__lead">è¿™æ¬¡ä¸€å…±æ‹¿åˆ°äº† {starsEarned} é¢—æ˜Ÿæ˜Ÿã€‚</p>
+      <span className="eyebrow">Íê³ÉÀ²</span>
+      <h2>{themeTitle} Ì½Ë÷Íê³É</h2>
+      <p className="completion-panel__lead">Õâ´ÎÒ»¹²ÄÃµ½ÁË {starsEarned} ¿ÅĞÇĞÇ¡£</p>
 
       <div className="completion-stats">
         <article>
           <strong>{learnedWordsCount}</strong>
-          <span>æœ¬ä¸»é¢˜å•è¯</span>
+          <span>±¾Ö÷Ìâµ¥´Ê</span>
         </article>
         <article>
           <strong>{starsEarned}</strong>
-          <span>æœ¬è½®æ˜Ÿæ˜Ÿ</span>
+          <span>±¾ÂÖĞÇĞÇ</span>
         </article>
         <article>
           <strong>{totalStars}</strong>
-          <span>ç´¯è®¡æ˜Ÿæ˜Ÿ</span>
+          <span>ÀÛ¼ÆĞÇĞÇ</span>
         </article>
       </div>
 
       <div className="completion-panel__actions">
         <button type="button" onClick={onReplay}>
-          å†ç©ä¸€æ¬¡
+          ÔÙÍæÒ»´Î
         </button>
         <button type="button" className="button-secondary" onClick={onGoHome}>
-          è¿”å›é¦–é¡µ
+          ·µ»ØÊ×Ò³
         </button>
       </div>
 
-      <BadgeWall title="ä½ çš„ä¸»é¢˜å¾½ç« " badges={badgeItems} />
+      <BadgeWall title="ÄãµÄÖ÷Ìâ»ÕÕÂ" badges={badgeItems} />
     </section>
   );
-}
+});

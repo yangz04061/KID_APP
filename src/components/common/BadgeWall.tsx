@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 type BadgeItem = {
   id: string;
   title: string;
@@ -23,11 +25,11 @@ function toneColor(tone: BadgeItem["tone"]) {
   }
 }
 
-export function BadgeWall({ title, badges, compact = false }: BadgeWallProps) {
+export const BadgeWall = memo(function BadgeWall({ title, badges, compact = false }: BadgeWallProps) {
   return (
     <section className={`badge-wall ${compact ? "badge-wall--compact" : ""}`}>
       <div className="badge-wall__header">
-        <span className="eyebrow">å¾½ç« å¢™</span>
+        <span className="eyebrow">»ÕÕÂÇ½</span>
         <h3>{title}</h3>
       </div>
       <div className="badge-wall__grid">
@@ -46,4 +48,4 @@ export function BadgeWall({ title, badges, compact = false }: BadgeWallProps) {
       </div>
     </section>
   );
-}
+});

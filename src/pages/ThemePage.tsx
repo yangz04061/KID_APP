@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { WordArt } from "../components/common/WordArt";
 import type { Theme, Word } from "../types/content";
 
@@ -15,7 +15,7 @@ type ThemePageProps = {
   onOpenParent: () => void;
 };
 
-export function ThemePage({
+export const ThemePage = memo(function ThemePage({
   theme,
   previewWords,
   previewIndex,
@@ -31,10 +31,7 @@ export function ThemePage({
   const isLastWord = previewIndex >= previewWords.length - 1;
 
   useEffect(() => {
-    if (!autoPlay || !currentWord) {
-      return;
-    }
-
+    if (!autoPlay || !currentWord) return;
     onSpeakWord(currentWord.en);
   }, [autoPlay, currentWord, onSpeakWord]);
 
@@ -42,63 +39,63 @@ export function ThemePage({
     <section className={`panel story-panel ${theme.accent}`}>
       <div className="section-heading">
         <div>
-          <span className="eyebrow">ä¸»é¢˜é¡µ</span>
+          <span className="eyebrow">Ö÷ÌâÒ³</span>
           <h2>{theme.title}</h2>
         </div>
         <div className="section-actions">
           <button type="button" className="button-secondary" onClick={onOpenParent}>
-            å®¶é•¿åŒº
+            ¼Ò³¤Çø
           </button>
           <button type="button" className="button-secondary" onClick={onBack}>
-            è¿”å›é¦–é¡µ
+            ·µ»ØÊ×Ò³
           </button>
         </div>
       </div>
 
       <div className="story-panel__layout">
         <div className="story-panel__scene">
-          <h3>ä¸»é¢˜åœºæ™¯</h3>
+          <h3>Ö÷Ìâ³¡¾°</h3>
           <p>{theme.spotlight}</p>
           <div className="story-panel__actions">
             <button type="button" onClick={onNextWord}>
-              {previewIndex === 0 ? "å¼€å§‹æ¢ç´¢" : "ç»§ç»­çœ‹å•è¯"}
+              {previewIndex === 0 ? "¿ªÊ¼Ì½Ë÷" : "¼ÌĞø¿´µ¥´Ê"}
             </button>
             <button type="button" className="button-secondary" onClick={onRestartPreview}>
-              é‡æ–°é¢„è§ˆ
+              ÖØĞÂÔ¤ÀÀ
             </button>
           </div>
 
-          <div className="game-strip" aria-label="åç»­æ¸¸æˆé¢„å‘Š">
-            <span className="game-pill">å¬å£°éŸ³é€‰å›¾ç‰‡</span>
-            <span className="game-pill">å›¾ç‰‡é…å¯¹</span>
-            <span className="game-pill">åœºæ™¯æ‰¾ä¸€æ‰¾</span>
+          <div className="game-strip" aria-label="ºóĞøÓÎÏ·Ô¤¸æ">
+            <span className="game-pill">ÌıÉùÒôÑ¡Í¼Æ¬</span>
+            <span className="game-pill">Í¼Æ¬Åä¶Ô</span>
+            <span className="game-pill">³¡¾°ÕÒÒ»ÕÒ</span>
           </div>
         </div>
 
         <div className="word-preview">
-          <h3>å•è¯é¢„è§ˆ</h3>
+          <h3>µ¥´ÊÔ¤ÀÀ</h3>
           <div className="word-preview__card">
             <span className="word-preview__progress">
-              ç¬¬ {previewIndex + 1} / {previewWords.length} ä¸ª
+              µÚ {previewIndex + 1} / {previewWords.length} ¸ö
             </span>
             <div className="word-preview__illustration">
               <WordArt word={currentWord} size="large" />
             </div>
             <strong>{currentWord.en}</strong>
-            {showChinese ? <span>{currentWord.zh}</span> : <span>ä¸­æ–‡é‡Šä¹‰å·²éšè—</span>}
+            {showChinese ? <span>{currentWord.zh}</span> : <span>ÖĞÎÄÊÍÒåÒÑÒş²Ø</span>}
             <div className="word-preview__actions">
               <button
                 type="button"
                 className="button-secondary"
                 onClick={() => onSpeakWord(currentWord.en)}
               >
-                æ’­æ”¾å‘éŸ³
+                ²¥·Å·¢Òô
               </button>
               <button type="button" onClick={onNextWord}>
-                {isLastWord ? "å®Œæˆé¢„è§ˆ" : "ä¸‹ä¸€ä¸ª"}
+                {isLastWord ? "Íê³ÉÔ¤ÀÀ" : "ÏÂÒ»¸ö"}
               </button>
               <button type="button" className="button-secondary" onClick={onRestartPreview}>
-                ä»å¤´å¼€å§‹
+                ´ÓÍ·¿ªÊ¼
               </button>
             </div>
           </div>
@@ -112,7 +109,7 @@ export function ThemePage({
                   </span>
                   {word.en}
                 </strong>
-                {showChinese ? <span>{word.zh}</span> : <span>ä¸­æ–‡éšè—</span>}
+                {showChinese ? <span>{word.zh}</span> : <span>ÖĞÎÄÒş²Ø</span>}
               </li>
             ))}
           </ul>
@@ -120,4 +117,4 @@ export function ThemePage({
       </div>
     </section>
   );
-}
+});

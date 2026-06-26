@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { WordArt } from "../components/common/WordArt";
 import type { Theme, Word } from "../types/content";
 
@@ -16,19 +17,19 @@ type AlbumPageProps = {
   onOpenTheme: (themeId: string) => void;
 };
 
-export function AlbumPage({ totalUnlocked, totalWords, themes, onOpenTheme }: AlbumPageProps) {
+export const AlbumPage = memo(function AlbumPage({ totalUnlocked, totalWords, themes, onOpenTheme }: AlbumPageProps) {
   return (
     <section className="panel album-panel">
       <div className="section-heading">
         <div>
-          <span className="eyebrow">æ”¶è—å†Œ</span>
-          <h2>æˆ‘çš„å•è¯æ”¶è—</h2>
+          <span className="eyebrow">ÊÕ²Ø²á</span>
+          <h2>ÎÒµÄµ¥´ÊÊÕ²Ø</h2>
         </div>
         <div className="album-panel__summary">
           <strong>
             {totalUnlocked} / {totalWords}
           </strong>
-          <span>å·²ç‚¹äº®å•è¯</span>
+          <span>ÒÑµãÁÁµ¥´Ê</span>
         </div>
       </div>
 
@@ -41,7 +42,7 @@ export function AlbumPage({ totalUnlocked, totalWords, themes, onOpenTheme }: Al
                 <p>{theme.subtitle}</p>
               </div>
               <button type="button" className="button-secondary" onClick={() => onOpenTheme(theme.id)}>
-                å»æ¢ç´¢
+                È¥Ì½Ë÷
               </button>
             </div>
 
@@ -53,7 +54,7 @@ export function AlbumPage({ totalUnlocked, totalWords, themes, onOpenTheme }: Al
                 >
                   <WordArt word={word} size="medium" />
                   <strong>{unlocked ? word.en : "???"}</strong>
-                  <span>{unlocked ? word.zh : "ç»§ç»­æ¢ç´¢åè§£é”"}</span>
+                  <span>{unlocked ? word.zh : "¼ÌĞøÌ½Ë÷ºó½âËø"}</span>
                 </article>
               ))}
             </div>
@@ -62,4 +63,4 @@ export function AlbumPage({ totalUnlocked, totalWords, themes, onOpenTheme }: Al
       </div>
     </section>
   );
-}
+});

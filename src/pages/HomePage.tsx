@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { BadgeWall } from "../components/common/BadgeWall";
 import { ThemeCard, type ThemeProgress } from "../components/common/ThemeCard";
 import type { Theme } from "../types/content";
@@ -23,7 +24,7 @@ type HomePageProps = {
   onSelectTheme: (themeId: string) => void;
 };
 
-export function HomePage({
+export const HomePage = memo(function HomePage({
   themes,
   themeProgress,
   badgeItems,
@@ -41,38 +42,38 @@ export function HomePage({
     <section className="panel">
       <div className="section-heading">
         <div>
-          <span className="eyebrow">é¦–é¡µ</span>
-          <h2>ä»Šå¤©æƒ³ç©ä»€ä¹ˆï¼Ÿ</h2>
+          <span className="eyebrow">Ê×Ò³</span>
+          <h2>½ñÌìÏëÍæÊ²Ã´£¿</h2>
         </div>
         <button type="button" className="button-secondary" onClick={onOpenParent}>
-          å®¶é•¿å…¥å£
+          ¼Ò³¤Èë¿Ú
         </button>
       </div>
 
       <div className="home-summary">
-        <p className="home-meta">æœ€è¿‘å¸¸ç©ï¼š{lastPlayedThemeTitle}</p>
-        <p className="home-meta">å·²å­¦å•è¯ï¼š{learnedWordsCount}</p>
-        <p className="home-meta">ç´¯è®¡æ˜Ÿæ˜Ÿï¼š{totalStars}</p>
+        <p className="home-meta">×î½ü³£Íæ£º{lastPlayedThemeTitle}</p>
+        <p className="home-meta">ÒÑÑ§µ¥´Ê£º{learnedWordsCount}</p>
+        <p className="home-meta">ÀÛ¼ÆĞÇĞÇ£º{totalStars}</p>
       </div>
 
       <section className="continue-card">
         <div>
-          <span className="eyebrow">ç»§ç»­å­¦ä¹ </span>
+          <span className="eyebrow">¼ÌĞøÑ§Ï°</span>
           <h3>{continueThemeTitle}</h3>
           <p>{continueThemeSubtitle}</p>
         </div>
         <div className="continue-card__aside">
           <div className="continue-card__progress">
-            <span>å½“å‰è¿›åº¦</span>
+            <span>µ±Ç°½ø¶È</span>
             <strong>{continueProgressPercent}%</strong>
           </div>
           <button type="button" onClick={onResumeTheme}>
-            ç»§ç»­æŒ‘æˆ˜
+            ¼ÌĞøÌôÕ½
           </button>
         </div>
       </section>
 
-      <BadgeWall title="ä»Šå¤©å·²ç»ç‚¹äº®äº†å“ªäº›ä¸»é¢˜" badges={badgeItems} compact />
+      <BadgeWall title="½ñÌìÒÑ¾­µãÁÁÁËÄÄĞ©Ö÷Ìâ" badges={badgeItems} compact />
 
       <div className="theme-grid">
         {themes.map((theme) => (
@@ -86,4 +87,4 @@ export function HomePage({
       </div>
     </section>
   );
-}
+});

@@ -1,0 +1,17 @@
+{
+  "name": "Kid App - English Learning",
+  "short_name": "Kid App",
+  "description": "A children's English word-learning app with animals, vehicles, and construction themes.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff8ec",
+  "theme_color": "#ffcb57",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23ffcb57'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='%2316324f'>??</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

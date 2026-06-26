@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 type NavScreen = "home" | "album" | "parent";
 
 type AppNavigationProps = {
@@ -6,17 +8,17 @@ type AppNavigationProps = {
 };
 
 const navItems: Array<{ id: NavScreen; label: string }> = [
-  { id: "home", label: "é¦–é¡µ" },
-  { id: "album", label: "æ”¶è—å†Œ" },
-  { id: "parent", label: "å®¶é•¿åŒº" },
+  { id: "home", label: "Ê×Ò³" },
+  { id: "album", label: "ÊÕ²Ø²á" },
+  { id: "parent", label: "¼Ò³¤Çø" },
 ];
 
-export function AppNavigation({ activeScreen, onNavigate }: AppNavigationProps) {
+export const AppNavigation = memo(function AppNavigation({ activeScreen, onNavigate }: AppNavigationProps) {
   return (
-    <nav className="app-nav" aria-label="ä¸»å¯¼èˆª">
+    <nav className="app-nav" aria-label="Ö÷µ¼º½">
       <div className="app-nav__brand">
         <span className="eyebrow">Kid App</span>
-        <strong>è‹±è¯­æ¢ç´¢ä¹å›­</strong>
+        <strong>Ó¢ÓïÌ½Ë÷ÀÖÔ°</strong>
       </div>
       <div className="app-nav__tabs">
         {navItems.map((item) => (
@@ -32,4 +34,4 @@ export function AppNavigation({ activeScreen, onNavigate }: AppNavigationProps) 
       </div>
     </nav>
   );
-}
+});

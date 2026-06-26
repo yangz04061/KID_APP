@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { Theme } from "../../types/content";
 
 export type ThemeProgress = {
@@ -14,11 +15,11 @@ type ThemeCardProps = {
   onOpen: (themeId: string) => void;
 };
 
-export function ThemeCard({ theme, progress, onOpen }: ThemeCardProps) {
+export const ThemeCard = memo(function ThemeCard({ theme, progress, onOpen }: ThemeCardProps) {
   return (
     <article className={`theme-card ${theme.accent}`}>
       <div className="theme-card__topline">
-        <span className="theme-card__eyebrow">涓婚鎺㈢储</span>
+        <span className="theme-card__eyebrow">主题探索</span>
         <span className={`theme-card__status theme-card__status--${progress.statusTone}`}>
           {progress.statusLabel}
         </span>
@@ -29,7 +30,7 @@ export function ThemeCard({ theme, progress, onOpen }: ThemeCardProps) {
       <div className="theme-card__progress">
         <div className="theme-card__progress-meta">
           <span>
-            宸插 {progress.learnedCount} / {progress.totalCount}
+            已学 {progress.learnedCount} / {progress.totalCount}
           </span>
           <span>{progress.progressPercent}%</span>
         </div>
@@ -41,8 +42,8 @@ export function ThemeCard({ theme, progress, onOpen }: ThemeCardProps) {
         </div>
       </div>
       <button type="button" onClick={() => onOpen(theme.id)}>
-        寮�濮嬬帺
+        开始玩
       </button>
     </article>
   );
-}
+});

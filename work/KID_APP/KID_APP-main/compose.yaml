@@ -1,9 +1,0 @@
-services:
-  kid-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: kid-app
-    ports:
-      - "8080:80"
-    restart: unless-stopped
